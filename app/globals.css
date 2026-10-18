@@ -1524,3 +1524,26 @@ select {
     gap: 14px;
   }
 }
+
+.contact-guidance {
+  font-size: 13px;
+  color: var(--muted);
+  margin: -20px 0 30px;
+  max-width: 380px;
+}
+.service-pricing {
+  border-top: 1px solid var(--line);
+  padding: 30px 0 40px;
+  max-width: 850px;
+}
+.service-pricing p {
+  font-size: 17px;
+  color: var(--muted);
+  margin: 20px 0;
+}
+.package-scope {
+  max-width: 850px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 25px;
+}

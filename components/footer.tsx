@@ -17,7 +17,6 @@ export function Footer() {
         <a href={`mailto:${company.email}`}>
           {company.email} <Arrow />
         </a>
-        <a href={company.phoneHref}>{company.phone}</a>
         <a href={company.instagram} target="_blank" rel="noopener noreferrer">
           Instagram <Arrow />
         </a>
@@ -29,7 +28,7 @@ export function Footer() {
         <span>
           Independent film & audiovisual production
           <br />
-          Prishtina, Kosovo
+          {company.location}
         </span>
         <span>© {new Date().getFullYear()} Alpekan Films</span>
         <Link href="/contact">

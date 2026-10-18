@@ -133,9 +133,10 @@ export const packages = [
   },
   {
     name: "Custom",
-    videos: "Tailored production",
+    videos: "Tailored social media content",
     price: "From €1,000",
-    description: "A production plan shaped around your specific brief.",
+    description:
+      "A social media production plan shaped around your specific brief.",
   },
 ] as const;
 export const services = [
@@ -162,6 +163,6 @@ export const services = [
   {
     number: "05",
     name: "Social media production",
-    text: "Short-form video made for digital channels. Monthly production packages and custom projects.",
+    text: "Video and photography for social media posts. Monthly video packages and custom social content scoped around your needs.",
   },
 ];

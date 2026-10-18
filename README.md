@@ -1,6 +1,6 @@
 # Alpekan Films
 
-A responsive, monochrome public website for an independent film and audiovisual production company in Prishtina, Kosovo. Built with Next.js App Router, TypeScript and plain responsive CSS. The homepage landscape is original SVG placeholder artwork. Project thumbnails load from YouTube, and videos load the YouTube privacy-enhanced player only after a visitor presses Play. No external font service is required.
+A responsive, monochrome public website for an independent film and audiovisual production company in Prishtina, Kosova. Built with Next.js App Router, TypeScript and plain responsive CSS. The homepage landscape is original SVG placeholder artwork. Project thumbnails load from YouTube, and videos load the YouTube privacy-enhanced player only after a visitor presses Play. No external font service is required.
 
 ## Local preview
 
@@ -68,4 +68,8 @@ Browser tests verify all seven routes, supplied years/runtimes and Alper Zilgir 
 
 ## Company copy and contact details
 
-`lib/company.ts` is the single source for official email, phone, Instagram, registered name, fiscal number and address. About translates the supplied Albanian biography and company profile into English. Alper Zilgir’s collaborations through Imagine Films, Onima and Tatamata are described as his professional experience and are not presented as Alpekan Films clients. The registered trade name **Aplekan Films** is deliberately preserved, alongside the public name **Alpekan Films**. The registration date is rendered as 12 July 2024. No portrait or logo has been recreated; the chat image must be supplied as an accessible original file before replacing the header wordmark.
+`lib/company.ts` is the single source for official email, public location, Instagram, registered name and fiscal number. About translates the supplied Albanian biography and company profile into English. Alper Zilgir’s collaborations through Imagine Films, Onima and Tatamata are described as his professional experience and are not presented as Alpekan Films clients. The registered trade name **Aplekan Films** is deliberately preserved, alongside the public name **Alpekan Films**. The registration date is rendered as 12 July 2024. No portrait or logo has been recreated; the chat image must be supplied as an accessible original file before replacing the header wordmark.
+
+## Contact privacy and production pricing
+
+The public location is Prishtina, Kosova. No phone number, telephone link, street address or map coordinates are published. Email is the preferred contact route. Fixed prices and monthly packages are exclusively for social media content production, including videography and photography for posts; listed video counts are unchanged, and photo quantities are scoped individually. Films, music videos, commercials and other audiovisual productions have no fixed public rate: their approach, scope and quote are agreed around the brief and available budget. The inquiry form distinguishes project-based services from social media packages and includes an optional budget field. Social media account management is not offered.

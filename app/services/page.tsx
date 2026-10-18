@@ -23,6 +23,24 @@ export default function Services() {
           </Link>
         </div>
       </section>
+      <section className="service-pricing">
+        <span className="eyebrow">A PRODUCTION AROUND YOUR BRIEF</span>
+        <p>
+          Films, music videos, commercials and other audiovisual work are quoted
+          project by project. Email us your idea and available budget; we’ll
+          agree the approach, scope and deliverables with you.
+        </p>
+        <p>
+          Monthly packages apply only to social media content production —
+          videography and photography for posts.
+        </p>
+        <a
+          className="text-link"
+          href="mailto:filmsalpekan@gmail.com?subject=Project%20inquiry"
+        >
+          Email us about a project <Arrow />
+        </a>
+      </section>
       <div className="service-list">
         {services.map((service) => (
           <article key={service.number}>
@@ -39,7 +57,7 @@ export default function Services() {
                 }
               >
                 {service.number === "05"
-                  ? "View packages"
+                  ? "View social media packages"
                   : "Start a conversation"}{" "}
                 <Arrow />
               </Link>

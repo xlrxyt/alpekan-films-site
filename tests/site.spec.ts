@@ -244,11 +244,52 @@ test("company profile and public contact links use supplied details", async ({
       .getByRole("link", { name: "filmsalpekan@gmail.com", exact: true }),
   ).toHaveAttribute("href", "mailto:filmsalpekan@gmail.com");
   await expect(
-    page
-      .getByRole("main")
-      .getByRole("link", { name: "+383 49 117 134", exact: true }),
-  ).toHaveAttribute("href", "tel:+38349117134");
-  await expect(
     page.getByRole("main").getByRole("link", { name: "@alpekanfilms" }),
   ).toHaveAttribute("href", "https://www.instagram.com/alpekanfilms/");
+});
+
+test("phone and precise location stay off public pages", async ({ page }) => {
+  for (const path of [
+    "/",
+    "/about",
+    "/contact",
+    "/work",
+    "/services",
+    "/social-media-production",
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
+    await expect(page.locator("body")).not.toContainText("Carraleva");
+    await expect(page.locator("body")).not.toContainText("+383");
+    await expect(page.locator("body")).not.toContainText("42°39");
+    await expect(page.locator("footer")).toContainText("Prishtina, Kosova");
+  }
+});
+test("project inquiries use individual budgets rather than social package rates", async ({
+  page,
+}) => {
+  await page.goto("/services");
+  await expect(page.locator(".service-pricing")).toContainText(
+    "quoted project by project",
+  );
+  await page.goto("/social-media-production");
+  await expect(page.locator(".package-scope")).toContainText(
+    "apply only to social media content",
+  );
+  await page.goto("/contact");
+  await page.getByLabel("Your name").fill("Test Person");
+  await page.getByLabel("Email address").fill("test@example.com");
+  await page.getByLabel("Interested in").selectOption("Music video");
+  await page.getByLabel("Available budget").fill("€2,500");
+  await page
+    .getByLabel("Your project")
+    .fill("A music video production inquiry.");
+  await page.getByRole("button", { name: "Prepare inquiry" }).click();
+  await expect(page.getByLabel("Prepared inquiry")).toHaveValue(
+    /Service: Music video/,
+  );
+  await expect(page.getByLabel("Prepared inquiry")).toHaveValue(
+    /Budget: €2,500/,
+  );
+  await expect(page.getByLabel("Prepared inquiry")).not.toHaveValue(/Package:/);
 });

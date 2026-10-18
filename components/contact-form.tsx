@@ -21,7 +21,10 @@ export function ContactForm() {
       `Name: ${data.get("name")}`,
       `Email: ${data.get("email")}`,
       `Company: ${data.get("company") || "Not provided"}`,
-      `Package: ${data.get("package") || "General inquiry"}`,
+      packages.some((p) => p.name === data.get("package"))
+        ? `Package: ${data.get("package")} (social media content)`
+        : `Service: ${data.get("package") || "General project inquiry"}`,
+      `Budget: ${data.get("budget") || "To be discussed"}`,
       "",
       String(data.get("message")),
     ].join("\n");
@@ -100,12 +103,34 @@ export function ContactForm() {
           onChange={(e) => setSelected(e.target.value)}
         >
           <option value="">General project inquiry</option>
-          {packages.map((p) => (
-            <option key={p.name} value={p.name}>
-              {p.name} — {p.videos} — {p.price}
+          <optgroup label="Project-based productions">
+            <option value="Film production">
+              Film production — project-based quote
             </option>
-          ))}
+            <option value="Music video">
+              Music video — project-based quote
+            </option>
+            <option value="Commercial">Commercial — project-based quote</option>
+            <option value="Theatre / audiovisual">
+              Theatre / audiovisual — project-based quote
+            </option>
+          </optgroup>
+          <optgroup label="Social media content packages">
+            {packages.map((p) => (
+              <option key={p.name} value={p.name}>
+                {p.name} — social media — {p.videos} — {p.price}
+              </option>
+            ))}
+          </optgroup>
         </select>
+      </label>
+      <label>
+        Available budget (optional)
+        <input
+          name="budget"
+          maxLength={120}
+          placeholder="Your budget or range, with currency"
+        />
       </label>
       <label>
         Your project <span>*</span>
@@ -115,7 +140,7 @@ export function ContactForm() {
           minLength={10}
           maxLength={6000}
           rows={5}
-          placeholder="The idea, the format, your timing. Tell us a little about it."
+          placeholder="Your idea, format, timing and production needs. Tell us a little about it."
         />
       </label>
       <p className="form-privacy">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s — Alpekan Films",
   },
   description:
-    "Independent film and audiovisual production based in Prishtina, Kosovo. Films, music videos, commercials and stories for digital channels.",
+    "Independent film and audiovisual production based in Prishtina, Kosova. Films, music videos, commercials and stories for digital channels.",
 };
 export default function RootLayout({
   children,

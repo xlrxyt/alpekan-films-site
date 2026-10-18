@@ -7,8 +7,6 @@ export const company = {
   registrationDate: "12 July 2024",
   founder: "Alper Zilgir",
   email: "filmsalpekan@gmail.com",
-  phone: "+383 49 117 134",
-  phoneHref: "tel:+38349117134",
-  address: "Rruga Carraleva, no street number, Prishtina, Kosovo",
+  location: "Prishtina, Kosova",
   instagram: "https://www.instagram.com/alpekanfilms/",
 } as const;

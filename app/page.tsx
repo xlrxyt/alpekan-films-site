@@ -9,7 +9,7 @@ export default function Home() {
       <section className="home-hero">
         <div className="eyebrow hero-top">
           <span>INDEPENDENT PRODUCTION COMPANY</span>
-          <span>PRISHTINA, KOSOVO · 42°39′ N 21°09′ E</span>
+          <span>PRISHTINA, KOSOVA</span>
         </div>
         <h1>
           Independent stories.
@@ -57,7 +57,7 @@ export default function Home() {
           </h2>
           <p className="body-large">
             We are an independent film and audiovisual production company based
-            in Kosovo. We bring ideas to life through film, music, commercial
+            in Kosova. We bring ideas to life through film, music, commercial
             work and digital storytelling.
           </p>
           <Link href="/about" className="text-link">
@@ -93,11 +93,11 @@ export default function Home() {
         </h2>
         <div>
           <p>
-            Purposeful short-form video. From a focused monthly package to a
-            production built around your brief.
+            Social media videos and photography. From a focused monthly package
+            to a production built around your brief.
           </p>
           <Link className="button light" href="/social-media-production">
-            Explore production packages{" "}
+            Explore social media packages{" "}
             <span aria-hidden="true">
               <Arrow />
             </span>

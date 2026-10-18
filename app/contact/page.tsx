@@ -23,6 +23,11 @@ export default function Contact() {
             <br />
             Ready for your idea.
           </h2>
+          <p className="contact-guidance">
+            Email is the best way to reach us. For films, music videos and other
+            productions, tell us about your idea and budget. Scope and pricing
+            are agreed individually for each project.
+          </p>
           <dl className="contact-details">
             <div>
               <dt>EMAIL</dt>
@@ -31,14 +36,8 @@ export default function Contact() {
               </dd>
             </div>
             <div>
-              <dt>PHONE</dt>
-              <dd>
-                <a href={company.phoneHref}>{company.phone}</a>
-              </dd>
-            </div>
-            <div>
-              <dt>ADDRESS</dt>
-              <dd>{company.address}</dd>
+              <dt>BASED IN</dt>
+              <dd>{company.location}</dd>
             </div>
             <div>
               <dt>INSTAGRAM</dt>

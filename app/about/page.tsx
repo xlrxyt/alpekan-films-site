@@ -5,7 +5,7 @@ import { company } from "@/lib/company";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Alper Zilgir, filmmaker and founder of Alpekan Films, an independent audiovisual production company in Prishtina, Kosovo.",
+    "Meet Alper Zilgir, filmmaker and founder of Alpekan Films, an independent audiovisual production company in Prishtina, Kosova.",
 };
 export default function About() {
   return (
@@ -23,7 +23,7 @@ export default function About() {
             Founded and led by Alper Zilgir.
           </p>
           <span className="eyebrow">
-            PRISHTINA, KOSOVO / FILM & AUDIOVISUAL PRODUCTION
+            PRISHTINA, KOSOVA / FILM & AUDIOVISUAL PRODUCTION
           </span>
         </div>
       </section>
@@ -133,7 +133,7 @@ export default function About() {
               ["NUI / Fiscal number", company.fiscalNumber],
               ["Registration date", company.registrationDate],
               ["Owner & managing director", company.founder],
-              ["Address", company.address],
+              ["Based in", company.location],
             ].map(([label, value]) => (
               <div key={label}>
                 <dt>{label}</dt>
