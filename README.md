@@ -53,3 +53,9 @@ No email address, phone number, client, project credit or team member has been i
 Before public launch, provide official company assets, portfolio projects and rights-cleared media, contact details, and confirmed company copy. To receive inquiries, supply a verified recipient and implement a delivery service with server-side validation, spam protection, privacy disclosures and a tested success/error flow. Confirm tax treatment and package scope with the business; neither is assumed by this site. Shooting schedules depend on production requirements. Social media account management is not offered.
 
 The UnderWonder reference could not be reached from the build environment. The design interprets the requested cinematic, minimalist black-and-white direction with oversized typography and a conventional scrolling grid.
+
+## Vercel deployment
+
+`vercel.json` explicitly selects the Next.js framework, installs with `npm ci`, builds with `npm run build`, and uses `.next` as its output. This overrides stale framework/build/output defaults from a project created before the repository contained an application.
+
+Connect this repository's `main` branch and leave the Vercel **Root Directory** at the repository root (blank or `.`). After a push, open the newest deployment and use its **Visit** button; an older deployment URL continues to reference the older build. A Ready status confirms deployment processing, but check the actual homepage and navigation before treating a deployment as working.
