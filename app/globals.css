@@ -1557,3 +1557,33 @@ select {
   font-size: 14px;
   margin-top: 25px;
 }
+
+.cast-section {
+  margin-top: 40px;
+}
+.cast-section h3,
+.crew-heading {
+  font-size: 25px;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.cast-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+}
+.cast-list li {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.project-info .crew-heading {
+  margin-top: 35px;
+}
+.project-info .crew-list {
+  margin-top: 0;
+}

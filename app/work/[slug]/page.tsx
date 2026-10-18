@@ -26,6 +26,9 @@ export default async function ProjectPage({
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
+  const crew =
+    project.crew ??
+    project.roles.map((role) => ({ role, names: [project.creditName] }));
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
   return (
     <div className="page-shell project-detail">
@@ -38,6 +41,9 @@ export default async function ProjectPage({
         </span>
         <h1>{project.title}</h1>
         <p className="project-summary">
+          {project.alternateTitle && (
+            <>Also known as {project.alternateTitle} · </>
+          )}
           {project.format}
           {project.duration ? ` · ${project.duration}` : ""}
         </p>
@@ -52,6 +58,16 @@ export default async function ProjectPage({
             the frame.
           </h2>
           <p>{project.description}</p>
+          {project.cast && (
+            <section className="cast-section" aria-labelledby="cast-heading">
+              <h3 id="cast-heading">Cast</h3>
+              <ul className="cast-list">
+                {project.cast.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
         <div>
           <span className="eyebrow">PROJECT DETAILS</span>
@@ -70,10 +86,13 @@ export default async function ProjectPage({
               <dt>Format</dt>
               <dd>{project.format}</dd>
             </div>
-            {project.roles.map((role) => (
+          </dl>
+          <h3 className="crew-heading">Crew</h3>
+          <dl className="crew-list">
+            {crew.map(({ role, names }) => (
               <div key={role}>
                 <dt>{role}</dt>
-                <dd>{project.creditName}</dd>
+                <dd>{names.join(", ")}</dd>
               </div>
             ))}
             {project.production && (

@@ -17,12 +17,44 @@ export type Project = {
   description: string;
   roles: string[];
   creditName: string;
+  cast?: string[];
+  crew?: { role: string; names: string[] }[];
+  creditSource?: string;
+  alternateTitle?: string;
   production?: string;
   postProduction?: string;
 };
 export const projects: Project[] = [
   {
     slug: "chronicles-of-sonatine",
+    cast: [
+      "Blendon Ahmeti",
+      "Flaka Latifi",
+      "Tristan Halilaj",
+      "Don Shala",
+      "Art Pasha",
+      "Lirije Bytyçi",
+      "Gjeni Basha",
+      "Arlind Islami",
+      "Festim Bajçinca",
+      "Andi Bajgora",
+    ],
+    crew: [
+      { role: "Director", names: ["Alper Zilgir"] },
+      { role: "Producer", names: ["Alper Zilgir"] },
+      { role: "Screenwriter", names: ["Alper Zilgir"] },
+      { role: "Casting", names: ["Eli Gashi"] },
+      { role: "Editor", names: ["Alper Zilgir"] },
+      { role: "Cinematography", names: ["Artan Zogjani"] },
+      { role: "Assistant director", names: ["Erlisë Beqiri"] },
+      { role: "Camera operator", names: ["Kushtrim Haxha"] },
+      { role: "Additional photography", names: ["Kushtrim Haxha"] },
+      { role: "Set decoration", names: ["Alba Bytyçi"] },
+      { role: "Sound", names: ["Pëllumb Ballata"] },
+      { role: "Costume design", names: ["Dea Ahmetaj"] },
+      { role: "Makeup", names: ["Erleta Matoshi"] },
+    ],
+    creditSource: "User-supplied Letterboxd screenshots",
     title: "Chronicles of Sonatine or: Shadows of the Broken Memories",
     category: "Films",
     year: 2025,
@@ -49,6 +81,29 @@ export const projects: Project[] = [
   },
   {
     slug: "moonshine",
+    cast: [
+      "Eli Gashi",
+      "Art Shala",
+      "Art Pasha",
+      "Don Shala",
+      "Drilon Tullari",
+      "Blendon Ahmeti",
+      "Albina Krasniqi",
+      "Alper Zilgir",
+      "Arlind Islami",
+      "Flamur Beqiri",
+      "Yzeir Meha",
+      "Brilant Krasniqi",
+      "Liridon Gashi",
+    ],
+    crew: [
+      { role: "Director", names: ["Alper Zilgir"] },
+      { role: "Screenwriter", names: ["Alper Zilgir"] },
+      { role: "Editor", names: ["Alper Zilgir"] },
+      { role: "Cinematography", names: ["Alper Zilgir"] },
+      { role: "Makeup", names: ["Art Shala", "Qendresa Isufi"] },
+    ],
+    creditSource: "User-supplied Letterboxd screenshots",
     title: "Moonshine",
     category: "Films",
     year: 2022,
@@ -62,6 +117,20 @@ export const projects: Project[] = [
   },
   {
     slug: "isekai",
+    cast: [
+      "Art Pasha",
+      "Yzeir Meha",
+      "Qlirim Shabani",
+      "Art Shala",
+      "Flamur Beqiri",
+    ],
+    crew: [
+      { role: "Director", names: ["Alper Zilgir"] },
+      { role: "Screenwriter", names: ["Alper Zilgir"] },
+      { role: "Editor", names: ["Alper Zilgir"] },
+      { role: "Cinematography", names: ["Donart Zymberi"] },
+    ],
+    creditSource: "User-supplied Letterboxd screenshots",
     title: "Isekai",
     category: "Films",
     year: 2021,
@@ -74,6 +143,22 @@ export const projects: Project[] = [
   },
   {
     slug: "goditja",
+    alternateTitle: "Knockout",
+    cast: [
+      "Brilant Krasniqi",
+      "Flamur Beqiri",
+      "Donart Zymberi",
+      "Kushtrim Haxha",
+    ],
+    crew: [
+      { role: "Director", names: ["Alper Zilgir"] },
+      { role: "Screenwriter", names: ["Alper Zilgir"] },
+      { role: "Editor", names: ["Alper Zilgir"] },
+      { role: "Cinematography", names: ["Kushtrim Haxha"] },
+      { role: "Assistant director", names: ["Donart Zymberi"] },
+      { role: "Lighting", names: ["Alper Zilgir"] },
+    ],
+    creditSource: "User-supplied Letterboxd screenshots",
     title: "Goditja",
     category: "Films",
     year: 2020,

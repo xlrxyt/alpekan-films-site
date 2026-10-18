@@ -293,3 +293,36 @@ test("project inquiries use individual budgets rather than social package rates"
   );
   await expect(page.getByLabel("Prepared inquiry")).not.toHaveValue(/Package:/);
 });
+
+test("supplied cast and crew credits appear on the matching film pages", async ({
+  page,
+}) => {
+  for (const [slug, castCount, castName, cinematographer] of [
+    ["isekai", 5, "Qlirim Shabani", "Donart Zymberi"],
+    ["moonshine", 13, "Liridon Gashi", "Alper Zilgir"],
+    ["chronicles-of-sonatine", 10, "Flaka Latifi", "Artan Zogjani"],
+    ["goditja", 4, "Brilant Krasniqi", "Kushtrim Haxha"],
+  ] as const) {
+    await page.goto(`/work/${slug}`);
+    await expect(page.locator(".cast-list li")).toHaveCount(castCount);
+    await expect(page.locator(".cast-list")).toContainText(castName);
+    const credit = page
+      .locator(".crew-list > div")
+      .filter({
+        has: page.locator("dt").filter({ hasText: /^Cinematography$/ }),
+      });
+    await expect(credit.locator("dd")).toHaveText(cinematographer);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth,
+      ),
+    ).toBe(true);
+  }
+  await expect(page.locator(".project-summary")).toContainText("Knockout");
+  await page.goto("/work/chronicles-of-sonatine");
+  await expect(page.locator(".project-summary")).toContainText("39 minutes");
+  await expect(page.locator(".crew-list")).toContainText("Pëllumb Ballata");
+  await page.goto("/work/fortress-mp4");
+  await expect(page.locator(".cast-list")).toHaveCount(0);
+  await expect(page.locator(".crew-list")).toContainText("Alper Zilgir");
+});
