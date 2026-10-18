@@ -18,10 +18,6 @@ export default function Work() {
           <span className="eyebrow">SCROLL TO EXPLORE ↓</span>
         </div>
       </section>
-      <p className="placeholder-note">
-        Portfolio in preparation. The entries below are clearly labeled
-        placeholders, not client projects.
-      </p>
       <WorkGrid />
     </div>
   );

@@ -72,18 +72,14 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <span className="eyebrow">02 / IN THE FRAME</span>
-            <h2>Space for stories.</h2>
+            <h2>Selected work.</h2>
           </div>
           <Link href="/work" className="text-link">
             Explore all work <Arrow />
           </Link>
         </div>
-        <p className="placeholder-note">
-          A preview of the portfolio structure. Official projects and media will
-          be added here.
-        </p>
         <div className="project-grid">
-          {projects.slice(0, 2).map((project, index) => (
+          {[projects[0], projects[6]].map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>

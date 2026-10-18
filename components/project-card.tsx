@@ -1,5 +1,5 @@
 import { Arrow } from "@/components/arrow";
-import Image from "next/image";
+import { ProjectThumbnail } from "./project-thumbnail";
 import Link from "next/link";
 import { projects } from "@/lib/content";
 export function ProjectCard({
@@ -12,13 +12,10 @@ export function ProjectCard({
   return (
     <Link className="project-card" href={`/work/${project.slug}`}>
       <div className="project-image">
-        <Image
-          src={project.image}
-          alt={`${project.category}: abstract placeholder artwork, not a commissioned project`}
-          width={1200}
-          height={800}
-        />
-        <span className="image-label">{project.note}</span>
+        <ProjectThumbnail videoId={project.videoId} title={project.title} />
+        <span className="image-label">
+          {project.year} / {project.format}
+        </span>
         <span className="project-arrow" aria-hidden="true">
           <Arrow />
         </span>

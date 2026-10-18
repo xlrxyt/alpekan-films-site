@@ -6,40 +6,110 @@ export const categories = [
   "Theatre/Audiovisual",
 ] as const;
 export type Category = (typeof categories)[number];
-export const projects: {
+export type Project = {
   slug: string;
   title: string;
   category: Exclude<Category, "All">;
-  image: string;
-  note: string;
-}[] = [
+  year: number;
+  duration?: string;
+  videoId: string;
+  format: string;
+  description: string;
+  roles: string[];
+  creditName: string;
+  production?: string;
+  postProduction?: string;
+};
+export const projects: Project[] = [
   {
-    slug: "film-placeholder",
-    title: "A story, waiting to be told.",
+    slug: "chronicles-of-sonatine",
+    title: "Chronicles of Sonatine or: Shadows of the Broken Memories",
     category: "Films",
-    image: "/images/film.svg",
-    note: "Film project placeholder",
+    year: 2025,
+    duration: "39 minutes",
+    videoId: "Uhpz6Jbs9zE",
+    format: "Graduation film",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Screenwriter", "Producer", "Editor"],
+    description:
+      "A graduation film screened at the closing of the UPward International Student Film Festival in Prishtina in 2025.",
   },
   {
-    slug: "music-video-placeholder",
-    title: "Sound into vision.",
+    slug: "fortress-mp4",
+    title: "Fortress.mp4",
+    category: "Films",
+    year: 2024,
+    duration: "4 minutes",
+    videoId: "IvD9FJ4sjuw",
+    format: "Documentary",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Director of photography", "Editor", "Co-screenwriter"],
+    description:
+      "A documentary made during “Stories We Tell – Camp 3” at DokuFest.",
+  },
+  {
+    slug: "moonshine",
+    title: "Moonshine",
+    category: "Films",
+    year: 2022,
+    duration: "16 minutes",
+    videoId: "JfQ4jzuNwiE",
+    format: "Student film",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Screenwriter", "Director of photography", "Editor"],
+    description:
+      "A third-year student film screened at East Koenji Film Festival in Tokyo, Japan, on 15 June 2024.",
+  },
+  {
+    slug: "isekai",
+    title: "Isekai",
+    category: "Films",
+    year: 2021,
+    duration: "13 minutes",
+    videoId: "4iaGSJeEDdg",
+    format: "Student film",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Screenwriter", "Editor"],
+    description: "A film made during the second year of studies.",
+  },
+  {
+    slug: "goditja",
+    title: "Goditja",
+    category: "Films",
+    year: 2020,
+    duration: "6 minutes",
+    videoId: "-Cm3vjTCNvk",
+    format: "Student film",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Screenwriter", "Editor"],
+    description: "A film made during the first year of studies.",
+  },
+  {
+    slug: "abdullah-gerguri",
+    title: "Dokumentar Portret: Abdullah Gerguri",
+    category: "Films",
+    year: 2022,
+    duration: "15 minutes",
+    videoId: "Knf3F2iNDPE",
+    format: "Documentary portrait",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Screenwriter", "Director of photography", "Editor"],
+    description:
+      "Made for the Documentary Directing course during the second year of studies at the University of Prishtina.",
+  },
+  {
+    slug: "fiona-abdullahu-dardha-tbuta",
+    title: "Fiona Abdullahu: Dardha t’Buta",
     category: "Music Videos",
-    image: "/images/music.svg",
-    note: "Music video placeholder",
-  },
-  {
-    slug: "commercial-placeholder",
-    title: "An idea in motion.",
-    category: "Commercials",
-    image: "/images/commercial.svg",
-    note: "Commercial project placeholder",
-  },
-  {
-    slug: "audiovisual-placeholder",
-    title: "Beyond the frame.",
-    category: "Theatre/Audiovisual",
-    image: "/images/theatre.svg",
-    note: "Theatre / audiovisual placeholder",
+    year: 2026,
+    videoId: "hUmk85wkCS4",
+    format: "Music video",
+    creditName: "Alper Zilgir",
+    roles: ["Director", "Director of photography", "Editor"],
+    description:
+      "A music video for Fiona Abdullahu’s “Dardha t’Buta”. Production and post-production by Alpekan Films.",
+    production: "Alpekan Films",
+    postProduction: "Alpekan Films",
   },
 ];
 export const packages = [

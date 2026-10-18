@@ -1,9 +1,9 @@
 import { Arrow } from "@/components/arrow";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/content";
+import { VideoPlayer } from "@/components/video-player";
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
 }
@@ -14,14 +14,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return {
-    title: project
-      ? `${project.category} — Portfolio placeholder`
-      : "Project not found",
-    robots: { index: false, follow: true },
-  };
+  return project
+    ? { title: project.title, description: project.description }
+    : { title: "Project not found" };
 }
-export default async function Project({
+export default async function ProjectPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -37,22 +34,15 @@ export default async function Project({
       </Link>
       <section className="page-heading">
         <span className="eyebrow">
-          {project.category} / PORTFOLIO PLACEHOLDER
+          {project.category} / {project.year}
         </span>
         <h1>{project.title}</h1>
-        <p className="placeholder-note">
-          This is a layout preview. No commissioned project, client or credits
-          are represented.
+        <p className="project-summary">
+          {project.format}
+          {project.duration ? ` · ${project.duration}` : ""}
         </p>
       </section>
-      <div className="video-placeholder">
-        <span className="video-icon" aria-hidden="true">
-          <span className="play-triangle" />
-        </span>
-        <h2>Space for the film.</h2>
-        <p>Official video will appear here when available.</p>
-        <span className="eyebrow">VIDEO PLACEHOLDER / 16:9</span>
-      </div>
+      <VideoPlayer videoId={project.videoId} title={project.title} />
       <section className="project-info">
         <div>
           <span className="eyebrow">ABOUT THE PROJECT</span>
@@ -61,42 +51,48 @@ export default async function Project({
             <br />
             the frame.
           </h2>
-          <p>
-            Project description to be supplied. This space is reserved for the
-            concept, production approach and story of an official Alpekan Films
-            project.
-          </p>
+          <p>{project.description}</p>
         </div>
         <div>
-          <span className="eyebrow">CREDITS / TO BE CONFIRMED</span>
+          <span className="eyebrow">PROJECT DETAILS</span>
           <dl>
-            {[
-              "Project title",
-              "Director",
-              "Production",
-              "Cinematography",
-              "Editing",
-              "Year",
-            ].map((label) => (
-              <div key={label}>
-                <dt>{label}</dt>
-                <dd>To be supplied</dd>
+            <div>
+              <dt>Year</dt>
+              <dd>{project.year}</dd>
+            </div>
+            {project.duration && (
+              <div>
+                <dt>Runtime</dt>
+                <dd>{project.duration}</dd>
+              </div>
+            )}
+            <div>
+              <dt>Format</dt>
+              <dd>{project.format}</dd>
+            </div>
+            {project.roles.map((role) => (
+              <div key={role}>
+                <dt>{role}</dt>
+                <dd>{project.creditName}</dd>
               </div>
             ))}
+            {project.production && (
+              <div>
+                <dt>Production</dt>
+                <dd>{project.production}</dd>
+              </div>
+            )}
+            {project.postProduction && (
+              <div>
+                <dt>Post-production</dt>
+                <dd>{project.postProduction}</dd>
+              </div>
+            )}
           </dl>
         </div>
       </section>
-      <div className="project-still">
-        <Image
-          src={project.image}
-          alt="Abstract project still placeholder — official imagery to be supplied"
-          width={1200}
-          height={800}
-        />
-        <span className="eyebrow">01 / IMAGE PLACEHOLDER</span>
-      </div>
       <Link className="next-project" href={`/work/${next.slug}`}>
-        <span className="eyebrow">NEXT PLACEHOLDER</span>
+        <span className="eyebrow">NEXT PROJECT</span>
         <span>
           {next.title} <Arrow />
         </span>

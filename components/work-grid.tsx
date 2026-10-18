@@ -21,14 +21,22 @@ export function WorkGrid() {
             onClick={() => setActive(category)}
           >
             {category}
-            {category === "All" && <sup>04</sup>}
+            {category === "All" && (
+              <sup>{String(projects.length).padStart(2, "0")}</sup>
+            )}
           </button>
         ))}
       </div>
       <p className="filter-status" role="status">
-        {visible.length} {visible.length === 1 ? "placeholder" : "placeholders"}{" "}
-        / {active}
+        {visible.length} {visible.length === 1 ? "project" : "projects"} /{" "}
+        {active}
       </p>
+      {visible.length === 0 && (
+        <p className="empty-work">
+          Projects in this category will be added soon. Explore Films or Music
+          Videos in the meantime.
+        </p>
+      )}
       <div className="project-grid">
         {visible.map((project) => (
           <ProjectCard
