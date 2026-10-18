@@ -73,6 +73,7 @@ img {
   height: auto;
 }
 .site-header {
+  background: var(--bg);
   height: 112px;
   margin: 0 4.3%;
   display: flex;
@@ -82,18 +83,22 @@ img {
   position: relative;
   z-index: 10;
 }
-.wordmark {
-  display: flex;
-  flex-direction: column;
-  font-size: 25px;
-  line-height: 0.88;
-  letter-spacing: -1.6px;
-  font-weight: 900;
+.brand-logo {
+  display: block;
+  position: relative;
+  width: 140px;
+  height: 90px;
+  flex-shrink: 0;
+  overflow: hidden;
+  mix-blend-mode: screen;
 }
-.wordmark span {
-  font-size: 14px;
-  letter-spacing: 5px;
-  margin-top: 7px;
+.brand-logo img {
+  position: absolute;
+  width: 223%;
+  height: auto;
+  max-width: none;
+  left: -61.3%;
+  top: -43%;
 }
 .main-nav {
   display: flex;
@@ -907,11 +912,9 @@ select {
     height: 88px;
     margin: 0 6%;
   }
-  .wordmark {
-    font-size: 22px;
-  }
-  .wordmark span {
-    font-size: 12px;
+  .brand-logo {
+    width: 110px;
+    height: 72px;
   }
   .menu-toggle {
     display: block;
