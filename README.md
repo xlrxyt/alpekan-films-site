@@ -1,6 +1,6 @@
 # Alpekan Films
 
-A responsive, monochrome public website for an independent film and audiovisual production company in Prishtina, Kosova. Built with Next.js App Router, TypeScript and plain responsive CSS. The homepage landscape is original SVG placeholder artwork. Project thumbnails load from YouTube, and videos load the YouTube privacy-enhanced player only after a visitor presses Play. No external font service is required.
+A responsive, monochrome public website for an independent film and audiovisual production company in Prishtina, Kosova. Built with Next.js App Router, TypeScript and plain responsive CSS. The homepage features the supplied behind-the-scenes photograph from Chronicles of Sonatine, with a link to its project page. Project thumbnails load from YouTube, and videos load the YouTube privacy-enhanced player only after a visitor presses Play. No external font service is required.
 
 ## Local preview
 
@@ -73,3 +73,5 @@ Browser tests verify all seven routes, supplied years/runtimes and Alper Zilgir 
 ## Contact privacy and production pricing
 
 The public location is Prishtina, Kosova. No phone number, telephone link, street address or map coordinates are published. Email is the preferred contact route. Fixed prices and monthly packages are exclusively for social media content production, including videography and photography for posts; listed video counts are unchanged, and photo quantities are scoped individually. Films, music videos, commercials and other audiovisual productions have no fixed public rate: their approach, scope and quote are agreed around the brief and available budget. The inquiry form distinguishes project-based services from social media packages and includes an optional budget field. Social media account management is not offered.
+
+The homepage photograph is `public/images/image00001.jpeg` (1280 × 848). Its original color is retained; the desktop banner uses a wide CSS crop while mobile shows its full proportions. The caption identifies it as behind the scenes of Chronicles of Sonatine.

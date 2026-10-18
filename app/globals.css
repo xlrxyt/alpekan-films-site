@@ -201,32 +201,36 @@ img {
   background: var(--ink);
   color: var(--bg);
 }
+.homepage-feature {
+  margin: 0;
+}
 .hero-art {
-  height: clamp(260px, 42vw, 650px);
+  aspect-ratio: 2/1;
   position: relative;
   overflow: hidden;
 }
 .hero-art img {
   height: 100%;
   object-fit: cover;
+  object-position: 50% 55%;
 }
-.art-caption {
-  position: absolute;
-  left: 22px;
-  bottom: 18px;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: #eee;
-  text-shadow: 0 1px 8px #000;
+.feature-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0 5px;
 }
-.art-number {
-  position: absolute;
-  right: 25px;
-  bottom: 12px;
-  font-size: 48px;
-  font-weight: 400;
-  letter-spacing: -3px;
-  color: #ddd;
+.feature-caption .eyebrow {
+  color: var(--muted);
+}
+.feature-caption p {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  margin-top: 5px;
+}
+.feature-caption .text-link {
+  white-space: nowrap;
 }
 .section {
   padding: 100px 4.3%;
@@ -979,21 +983,24 @@ select {
     font-size: 21px;
   }
   .hero-art {
-    height: 330px;
+    aspect-ratio: 1280/848;
   }
   .hero-art img {
-    object-position: 57% center;
+    object-position: center;
   }
-  .art-caption {
-    left: 12px;
-    bottom: 12px;
-    max-width: 70%;
+  .feature-caption {
+    gap: 15px;
+    padding-top: 15px;
+  }
+  .feature-caption p {
+    font-size: 13px;
+  }
+  .feature-caption .eyebrow {
     font-size: 8px;
   }
-  .art-number {
-    font-size: 30px;
-    right: 12px;
-    bottom: 8px;
+  .feature-caption .text-link {
+    font-size: 11px;
+    gap: 14px;
   }
   .section {
     padding: 65px 6%;

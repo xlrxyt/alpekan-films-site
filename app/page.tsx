@@ -31,21 +31,27 @@ export default function Home() {
             </span>
           </Link>
         </div>
-        <div className="hero-art">
-          <Image
-            src="/images/hero.svg"
-            alt="Abstract black and white landscape illustration, placeholder visual"
-            width={1800}
-            height={900}
-            priority
-          />
-          <span className="art-caption">
-            ALPEKAN FILMS / VISUAL PLACEHOLDER
-          </span>
-          <span className="art-number" aria-hidden="true">
-            AF—01
-          </span>
-        </div>
+        <figure className="homepage-feature">
+          <div className="hero-art">
+            <Image
+              src="/images/image00001.jpeg"
+              alt="Film crew working around a camera on a street during the production of Chronicles of Sonatine"
+              width={1280}
+              height={848}
+              sizes="(max-width: 700px) 88vw, 92vw"
+              priority
+            />
+          </div>
+          <figcaption className="feature-caption">
+            <div>
+              <span className="eyebrow">BEHIND THE SCENES</span>
+              <p>Chronicles of Sonatine</p>
+            </div>
+            <Link href="/work/chronicles-of-sonatine" className="text-link">
+              Watch film <Arrow />
+            </Link>
+          </figcaption>
+        </figure>
       </section>
       <section className="section intro-section">
         <span className="eyebrow">01 / THE STUDIO</span>
