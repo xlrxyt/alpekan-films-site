@@ -1,3 +1,5 @@
+import { Arrow } from "@/components/arrow";
+import { company } from "@/lib/company";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/contact-form";
@@ -23,24 +25,36 @@ export default function Contact() {
           </h2>
           <dl className="contact-details">
             <div>
-              <dt>LOCATION</dt>
-              <dd>Prishtina, Kosovo</dd>
+              <dt>EMAIL</dt>
+              <dd>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </dd>
             </div>
             <div>
-              <dt>EMAIL & PHONE</dt>
+              <dt>PHONE</dt>
               <dd>
-                Official contact details
-                <br />
-                to be supplied.
+                <a href={company.phoneHref}>{company.phone}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>ADDRESS</dt>
+              <dd>{company.address}</dd>
+            </div>
+            <div>
+              <dt>INSTAGRAM</dt>
+              <dd>
+                <a
+                  href={company.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @alpekanfilms <Arrow />
+                </a>
               </dd>
             </div>
             <div>
               <dt>FOR SOCIAL PRODUCTION</dt>
-              <dd>
-                Shooting schedules depend
-                <br />
-                on production requirements.
-              </dd>
+              <dd>Shooting schedules depend on production requirements.</dd>
             </div>
           </dl>
         </aside>

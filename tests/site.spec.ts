@@ -162,6 +162,22 @@ test("inquiry validation and downloadable draft preserve entered data", async ({
     /Package: Growth/,
   );
   await expect(page.getByLabel("Prepared inquiry")).toHaveValue(/Test Person/);
+  const emailLink = await page
+    .getByRole("link", { name: "Open email app" })
+    .getAttribute("href");
+  const emailUrl = new URL(emailLink!);
+  expect(emailUrl.protocol).toBe("mailto:");
+  expect(emailUrl.pathname).toBe("filmsalpekan@gmail.com");
+  expect(emailUrl.searchParams.get("subject")).toBe(
+    "Growth inquiry — Alpekan Films",
+  );
+  expect(emailUrl.searchParams.get("body")).toContain(
+    "Email: test@example.com",
+  );
+  expect(emailUrl.searchParams.get("body")).toContain("Package: Growth");
+  expect(emailUrl.searchParams.get("body")).toContain(
+    "We would like to discuss a short film.",
+  );
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download .txt" }).click();
   expect((await downloadPromise).suggestedFilename()).toBe(
@@ -206,4 +222,33 @@ test("unknown projects return a real 404", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "A missing scene." }),
   ).toBeVisible();
+});
+
+test("company profile and public contact links use supplied details", async ({
+  page,
+}) => {
+  await page.goto("/about");
+  const main = page.getByRole("main");
+  await expect(
+    main.getByRole("heading", { name: "Alper Zilgir." }),
+  ).toBeVisible();
+  await expect(main).toContainText("Kırklareli");
+  await expect(main).toContainText("12 July 2024");
+  await expect(main).toContainText("Aplekan Films");
+  await expect(main).toContainText("812178318");
+  await expect(main.locator(".founder-experience")).toContainText("Tatamata");
+  await page.goto("/contact");
+  await expect(
+    page
+      .getByRole("main")
+      .getByRole("link", { name: "filmsalpekan@gmail.com", exact: true }),
+  ).toHaveAttribute("href", "mailto:filmsalpekan@gmail.com");
+  await expect(
+    page
+      .getByRole("main")
+      .getByRole("link", { name: "+383 49 117 134", exact: true }),
+  ).toHaveAttribute("href", "tel:+38349117134");
+  await expect(
+    page.getByRole("main").getByRole("link", { name: "@alpekanfilms" }),
+  ).toHaveAttribute("href", "https://www.instagram.com/alpekanfilms/");
 });

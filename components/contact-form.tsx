@@ -3,12 +3,14 @@ import { Arrow } from "@/components/arrow";
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { company } from "@/lib/company";
 import { packages } from "@/lib/content";
 export function ContactForm() {
   const query = useSearchParams();
   const requested = query.get("package") ?? "";
   const initial = packages.some((p) => p.name === requested) ? requested : "";
   const [selected, setSelected] = useState(initial);
+  const [subject, setSubject] = useState("Project inquiry — Alpekan Films");
   const [summary, setSummary] = useState("");
   const [feedback, setFeedback] = useState("");
   function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -23,6 +25,7 @@ export function ContactForm() {
       "",
       String(data.get("message")),
     ].join("\n");
+    setSubject(`${data.get("package") || "Project"} inquiry — Alpekan Films`);
     setSummary(text);
     setFeedback("");
   }
@@ -52,8 +55,9 @@ export function ContactForm() {
       <div className="form-intro">
         <h2>Tell us what you have in mind.</h2>
         <p>
-          Official contact details are awaiting confirmation. Prepare an inquiry
-          below to copy or download. This form does not send messages.
+          Prepare your inquiry below, then open it in your email app to send it
+          to {company.email}. You can also copy or download it. This website
+          does not send messages automatically.
         </p>
       </div>
       <div className="form-row">
@@ -115,8 +119,9 @@ export function ContactForm() {
         />
       </label>
       <p className="form-privacy">
-        Required fields are marked *. Your details stay in this browser and are
-        not submitted to a server.
+        Required fields are marked *. Preparing an inquiry keeps your details in
+        this browser. Choosing “Open email app” passes the draft to your email
+        app, where you review and send it.
       </p>
       <button className="button light" type="submit">
         Prepare inquiry{" "}
@@ -128,8 +133,9 @@ export function ContactForm() {
         <section className="inquiry-result" aria-live="polite">
           <h3>Your inquiry is ready.</h3>
           <p>
-            Nothing has been sent. Save this draft until official contact
-            details are available.
+            Nothing has been sent. Open your email app, review the draft and
+            press Send there. If an email app isn’t configured or the draft is
+            too long to open, copy the text and email it to {company.email}.
           </p>
           <textarea
             aria-label="Prepared inquiry"
@@ -137,6 +143,12 @@ export function ContactForm() {
             readOnly
             rows={10}
           />
+          <a
+            className="button light email-draft-link"
+            href={`mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`}
+          >
+            Open email app <Arrow />
+          </a>
           <div className="result-actions">
             <button type="button" className="button" onClick={copy}>
               Copy inquiry <Arrow />
