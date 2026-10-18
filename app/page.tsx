@@ -1,0 +1,113 @@
+import { Arrow } from "@/components/arrow";
+import Link from "next/link";
+import Image from "next/image";
+import { ProjectCard } from "@/components/project-card";
+import { projects } from "@/lib/content";
+export default function Home() {
+  return (
+    <>
+      <section className="home-hero">
+        <div className="eyebrow hero-top">
+          <span>INDEPENDENT PRODUCTION COMPANY</span>
+          <span>PRISHTINA, KOSOVO · 42°39′ N 21°09′ E</span>
+        </div>
+        <h1>
+          Independent stories.
+          <br />
+          <span className="outline-text">Moving images.</span>
+        </h1>
+        <div className="hero-bottom">
+          <p>
+            We are Alpekan Films.
+            <br />
+            Film & audiovisual production.
+            <br />
+            An independent point of view.
+          </p>
+          <Link href="/work" className="round-link">
+            <span>Explore our work</span>
+            <span className="circle-arrow" aria-hidden="true">
+              <Arrow />
+            </span>
+          </Link>
+        </div>
+        <div className="hero-art">
+          <Image
+            src="/images/hero.svg"
+            alt="Abstract black and white landscape illustration, placeholder visual"
+            width={1800}
+            height={900}
+            priority
+          />
+          <span className="art-caption">
+            ALPEKAN FILMS / VISUAL PLACEHOLDER
+          </span>
+          <span className="art-number" aria-hidden="true">
+            AF—01
+          </span>
+        </div>
+      </section>
+      <section className="section intro-section">
+        <span className="eyebrow">01 / THE STUDIO</span>
+        <div>
+          <h2>
+            Rooted in Prishtina.
+            <br />
+            Open to every story.
+          </h2>
+          <p className="body-large">
+            We are an independent film and audiovisual production company based
+            in Kosovo. We bring ideas to life through film, music, commercial
+            work and digital storytelling.
+          </p>
+          <Link href="/about" className="text-link">
+            Meet Alpekan{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
+          </Link>
+        </div>
+      </section>
+      <section className="section work-preview">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">02 / IN THE FRAME</span>
+            <h2>Space for stories.</h2>
+          </div>
+          <Link href="/work" className="text-link">
+            Explore all work <Arrow />
+          </Link>
+        </div>
+        <p className="placeholder-note">
+          A preview of the portfolio structure. Official projects and media will
+          be added here.
+        </p>
+        <div className="project-grid">
+          {projects.slice(0, 2).map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+      </section>
+      <section className="section social-callout">
+        <span className="eyebrow">03 / MADE FOR DIGITAL</span>
+        <h2>
+          Small screen.
+          <br />
+          Strong impression.
+        </h2>
+        <div>
+          <p>
+            Purposeful short-form video. From a focused monthly package to a
+            production built around your brief.
+          </p>
+          <Link className="button light" href="/social-media-production">
+            Explore production packages{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}

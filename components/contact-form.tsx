@@ -1,0 +1,153 @@
+"use client";
+import { Arrow } from "@/components/arrow";
+
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { packages } from "@/lib/content";
+export function ContactForm() {
+  const query = useSearchParams();
+  const requested = query.get("package") ?? "";
+  const initial = packages.some((p) => p.name === requested) ? requested : "";
+  const [selected, setSelected] = useState(initial);
+  const [summary, setSummary] = useState("");
+  const [feedback, setFeedback] = useState("");
+  function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const text = [
+      "ALPEKAN FILMS — PROJECT INQUIRY",
+      `Name: ${data.get("name")}`,
+      `Email: ${data.get("email")}`,
+      `Company: ${data.get("company") || "Not provided"}`,
+      `Package: ${data.get("package") || "General inquiry"}`,
+      "",
+      String(data.get("message")),
+    ].join("\n");
+    setSummary(text);
+    setFeedback("");
+  }
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(summary);
+      setFeedback("Inquiry copied. Nothing has been sent.");
+    } catch {
+      setFeedback(
+        "Copy isn’t available here. Select and copy the inquiry text below.",
+      );
+    }
+  }
+  function download() {
+    const url = URL.createObjectURL(
+      new Blob([summary], { type: "text/plain;charset=utf-8" }),
+    );
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "alpekan-films-inquiry.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+    setFeedback("Inquiry downloaded. Nothing has been sent.");
+  }
+  return (
+    <form className="contact-form" onSubmit={submit}>
+      <div className="form-intro">
+        <h2>Tell us what you have in mind.</h2>
+        <p>
+          Official contact details are awaiting confirmation. Prepare an inquiry
+          below to copy or download. This form does not send messages.
+        </p>
+      </div>
+      <div className="form-row">
+        <label>
+          Your name <span>*</span>
+          <input
+            name="name"
+            autoComplete="name"
+            required
+            maxLength={120}
+            placeholder="Name & surname"
+          />
+        </label>
+        <label>
+          Email address <span>*</span>
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            required
+            maxLength={254}
+            placeholder="you@example.com"
+          />
+        </label>
+      </div>
+      <label>
+        Company / organisation
+        <input
+          name="company"
+          autoComplete="organization"
+          maxLength={180}
+          placeholder="Optional"
+        />
+      </label>
+      <label>
+        Interested in
+        <select
+          name="package"
+          value={selected}
+          onChange={(e) => setSelected(e.target.value)}
+        >
+          <option value="">General project inquiry</option>
+          {packages.map((p) => (
+            <option key={p.name} value={p.name}>
+              {p.name} — {p.videos} — {p.price}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Your project <span>*</span>
+        <textarea
+          name="message"
+          required
+          minLength={10}
+          maxLength={6000}
+          rows={5}
+          placeholder="The idea, the format, your timing. Tell us a little about it."
+        />
+      </label>
+      <p className="form-privacy">
+        Required fields are marked *. Your details stay in this browser and are
+        not submitted to a server.
+      </p>
+      <button className="button light" type="submit">
+        Prepare inquiry{" "}
+        <span aria-hidden="true">
+          <Arrow />
+        </span>
+      </button>
+      {summary && (
+        <section className="inquiry-result" aria-live="polite">
+          <h3>Your inquiry is ready.</h3>
+          <p>
+            Nothing has been sent. Save this draft until official contact
+            details are available.
+          </p>
+          <textarea
+            aria-label="Prepared inquiry"
+            value={summary}
+            readOnly
+            rows={10}
+          />
+          <div className="result-actions">
+            <button type="button" className="button" onClick={copy}>
+              Copy inquiry <Arrow />
+            </button>
+            <button type="button" className="button" onClick={download}>
+              Download .txt ↓
+            </button>
+          </div>
+          <p role="status">{feedback}</p>
+        </section>
+      )}
+    </form>
+  );
+}
