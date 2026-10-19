@@ -1,10 +1,14 @@
 import { Arrow } from "@/components/arrow";
 import { company } from "@/lib/company";
 import type { Metadata } from "next";
+import { connection } from "next/server";
+import { getContactFormId } from "@/lib/contact-config";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/contact-form";
 export const metadata: Metadata = { title: "Contact" };
-export default function Contact() {
+export default async function Contact() {
+  await connection();
+  const directSubmission = Boolean(getContactFormId());
   return (
     <div className="page-shell">
       <section className="page-heading">
@@ -58,7 +62,7 @@ export default function Contact() {
           </dl>
         </aside>
         <Suspense fallback={<p>Loading inquiry form…</p>}>
-          <ContactForm />
+          <ContactForm directSubmission={directSubmission} />
         </Suspense>
       </div>
     </div>
